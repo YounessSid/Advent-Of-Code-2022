@@ -3,4 +3,4 @@
     open System.IO
     let readDay (day: int) =
         File.ReadLines($"Inputs/Day{day}.txt")
-        |> Seq.map string;
+        |> Seq.map string

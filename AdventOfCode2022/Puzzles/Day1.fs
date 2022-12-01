@@ -9,7 +9,7 @@
         dayOneInput
         |> String.concat(",")
         |> fun x -> x.Split(",,")
-        |> Array.map(fun x -> x.Split(",") |> Array.map int |> Array.sum)
+        |> Array.map(fun x -> x.Split(",") |> (Array.map int >> Array.sum))
     
     let part1 () =
         (* Gets the biggest amount of calories gathered by some Elf *)

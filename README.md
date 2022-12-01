@@ -6,4 +6,3 @@ https://adventofcode.com/
 ## Build & Run
 
 dotnet run
-Cancel changes

@@ -3,6 +3,9 @@
 Solving puzzles in F# & having fun! \
 https://adventofcode.com/
 
+## Target Framework
+net7.0
+
 ## Build & Run
 
 ```console

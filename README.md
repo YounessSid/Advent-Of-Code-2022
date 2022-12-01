@@ -1,8 +1,9 @@
 # Advent Of Code 2022
 
-Solving Advent of code 2022 puzzles in F#
+Solving puzzles in F# & having fun! \
 https://adventofcode.com/
 
 ## Build & Run
 
 dotnet run
+Cancel changes

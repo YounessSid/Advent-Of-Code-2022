@@ -5,4 +5,6 @@ https://adventofcode.com/
 
 ## Build & Run
 
+```console
 dotnet run
+```

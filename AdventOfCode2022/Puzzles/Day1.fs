@@ -4,11 +4,6 @@
     
     let dayOneInput = FileReader.readDay(1)
     
-    (*
-        we want to have an array of arrays at the end
-        we have an array of strings
-        we loop over and populate one array until we reach a line break then we populate the next array
-    *)
     let totalCaloriesPerElf =
         (* Gives back an array representing the sum of calories for every Elf *)
         dayOneInput

@@ -59,11 +59,36 @@
     
     (* Puzzles *)    
     let dayTwoInput = FileReader.readDay(2)
-    let part1 _ =
+    let parsedInputCombinations =
         dayTwoInput
         |> Seq.map(fun x -> x.Split(" "))
         |> Seq.map(fun x -> OpponentChoice.fromString(x |> Array.item(0)), MyChoice.fromString(x |> Array.item(1)))
+        
+    let part1 _ =
+        parsedInputCombinations
         |> Seq.map calculateMyTotalRoundScore
         |> Seq.sum
         
-    let part2 _ = "Not yet implemented"
+    let part2 _ =
+        (* Change of plans, based on the result i wanna get, i need to change my input accordingly *)
+        let adjustMyChoices inputCombination =
+            let opponentChoice = fst inputCombination
+            let myChoice = snd inputCombination
+            
+            match myChoice, opponentChoice with
+            | X, A -> A, Z
+            | X, B -> B, X
+            | X, C -> C, Y
+                
+            | Y, A -> A, X
+            | Y, B -> B, Y
+            | Y, C -> C, Z
+
+            | Z, A -> A, Y
+            | Z, B -> B, Z
+            | Z, C -> C, X
+                
+        parsedInputCombinations
+        |> Seq.map adjustMyChoices 
+        |> Seq.map calculateMyTotalRoundScore
+        |> Seq.sum

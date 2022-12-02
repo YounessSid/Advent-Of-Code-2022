@@ -15,6 +15,7 @@
         <Compile Include="Inputs\FileReader.fs" />
         <Compile Include="Puzzles\Day1.fs" />
         <Compile Include="Puzzles\Day2.fs" />
+        <Compile Include="Puzzles\Day3.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

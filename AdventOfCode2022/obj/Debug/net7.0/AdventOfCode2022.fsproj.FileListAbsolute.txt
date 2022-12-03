@@ -29,3 +29,4 @@ C:\streamliner\AdventOfCode2022\AdventOfCode2022\obj\Debug\net7.0\AdventOfCode20
 C:\streamliner\AdventOfCode2022\AdventOfCode2022\obj\Debug\net7.0\AdventOfCode2022.genruntimeconfig.cache
 C:\streamliner\AdventOfCode2022\AdventOfCode2022\obj\Debug\net7.0\ref\AdventOfCode2022.dll
 C:\streamliner\AdventOfCode2022\AdventOfCode2022\bin\Debug\net7.0\Inputs\Day2.txt
+C:\streamliner\AdventOfCode2022\AdventOfCode2022\bin\Debug\net7.0\Inputs\Day3.txt

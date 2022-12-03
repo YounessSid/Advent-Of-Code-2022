@@ -19,7 +19,14 @@ module AdventOfCode2022.Puzzles.Day3
             
             Set.intersect compartment1 compartment2
             |> Set.maxElement
-    
+        
+        let findCommonItemInGroup (rucksacks: Rucksack[]) =
+            rucksacks
+            |> Array.map(fun rucksack -> Set.ofArray <| Array.append rucksack.Compartment1 rucksack.Compartment2)
+            |> Array.toSeq
+            |> Set.intersectMany
+            |> Set.maxElement
+            
     module Score =
         let characters = [|
             'a'; 'b'; 'c'; 'd'; 'e'; 'f'; 'g'; 'h'; 'i'
@@ -41,4 +48,9 @@ module AdventOfCode2022.Puzzles.Day3
         |> Seq.map (Rucksack.fromString >> Rucksack.findCommonItem >> Score.calculate) 
         |> Seq.sum
 
-    let part2 _ = "Not implement yet"
+    let part2 _ =
+        dayThreeInput
+        |> Seq.map Rucksack.fromString
+        |> Seq.chunkBySize(3)
+        |> Seq.map (Rucksack.findCommonItemInGroup >> Score.calculate)
+        |> Seq.sum

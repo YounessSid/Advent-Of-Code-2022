@@ -50,18 +50,13 @@ module AdventOfCode2022.Puzzles.Day4
             
     let dayFourInput = FileReader.readDay(4)
     
-    let parsedPairs =
+    let checkOverlap kindOfOverlap =
         dayFourInput
         |> Seq.map Pair.fromString
-        
-    let part1 _ =
-        parsedPairs
-        |> Seq.map Pair.doesOneSectionFullyContainTheOther
+        |> Seq.map kindOfOverlap
         |> Seq.choose id
         |> Seq.length
         
-    let part2 _ =
-        parsedPairs
-        |> Seq.map Pair.isThereAnOverlapAtAll
-        |> Seq.choose id
-        |> Seq.length
+    let part1 _ = checkOverlap Pair.doesOneSectionFullyContainTheOther
+        
+    let part2 _ = checkOverlap Pair.isThereAnOverlapAtAll

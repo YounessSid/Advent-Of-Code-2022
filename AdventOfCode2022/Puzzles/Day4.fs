@@ -6,10 +6,12 @@ module AdventOfCode2022.Puzzles.Day4
         From: int
         Until: int
     }
+    
     type Pair = {
         Section1: Section
         Section2: Section
     }
+    
     module Pair =
         let stringToSection (s: string) : Section =
             let split = s.Split("-")
@@ -47,9 +49,11 @@ module AdventOfCode2022.Puzzles.Day4
             |> fun x -> match x with true -> Some pair | false -> None
             
     let dayFourInput = FileReader.readDay(4)
+    
     let parsedPairs =
         dayFourInput
         |> Seq.map Pair.fromString
+        
     let part1 _ =
         parsedPairs
         |> Seq.map Pair.doesOneSectionFullyContainTheOther

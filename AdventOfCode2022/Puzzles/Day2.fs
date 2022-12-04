@@ -4,22 +4,27 @@
 
     (* Models *)
     type Player = Opponent | Me
+    
     type OpponentChoice = A | B | C
+    
     module OpponentChoice =
-        let fromString(s: string) =
+        let fromString (s: string) =
             match s with
             | "A" -> A
             | "B" -> B
             | "C" -> C
             | other -> failwithf $"Failed to parse opponent's choice : '{other}'"
+            
     type MyChoice = X | Y | Z
+    
     module MyChoice =
-        let fromString(s: string) =
+        let fromString (s: string) =
             match s with
             | "X" -> X
             | "Y" -> Y
             | "Z" -> Z
-            | other -> failwithf $"Failed to parse my choice: '{other}'"     
+            | other -> failwithf $"Failed to parse my choice: '{other}'"
+            
     type RoundResult =
         | Win   of Player
         | Draw
@@ -59,6 +64,7 @@
     
     (* Puzzles *)    
     let dayTwoInput = FileReader.readDay(2)
+    
     let parsedInputCombinations =
         dayTwoInput
         |> Seq.map(fun x -> x.Split(" "))

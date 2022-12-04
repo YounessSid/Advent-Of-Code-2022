@@ -11,12 +11,12 @@
         |> fun x -> x.Split(",,")
         |> Array.map(fun x -> x.Split(",") |> (Array.map int >> Array.sum))
     
-    let part1 () =
+    let part1 _ =
         (* Gets the biggest amount of calories gathered by some Elf *)
         totalCaloriesPerElf
         |> Array.max
         
-    let part2 () =
+    let part2 _ =
         (* Gets the top three biggest amounts of calories gathered and sums them *)
         totalCaloriesPerElf
         |> Array.sortDescending

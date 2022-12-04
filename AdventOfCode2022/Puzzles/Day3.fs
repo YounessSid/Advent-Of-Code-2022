@@ -1,10 +1,12 @@
 module AdventOfCode2022.Puzzles.Day3
 
     open AdventOfCode2022.Inputs
+    
     type Rucksack = {
         Compartment1 : char[]
         Compartment2 : char[]
     }
+    
     module Rucksack =
         let fromString (s: string) =
             let charArray = s.ToCharArray()
@@ -36,7 +38,8 @@ module AdventOfCode2022.Puzzles.Day3
             'K'; 'L'; 'M'; 'N'; 'O'; 'P'; 'Q'; 'R'; 'S'
             'T'; 'U'; 'V'; 'W'; 'X'; 'Y'; 'Z'            
         |]
-        let calculate(c: char) =
+        
+        let calculate (c: char) =
             characters
             |> Array.findIndex(fun x -> x.Equals(c))
             |> fun index -> index + 1

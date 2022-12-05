@@ -115,9 +115,9 @@ module AdventOfCode2022.Puzzles.Day5
     
     type Machine = CrateMover9000 | CrateMover9001
     
-    let startLiftingWith advancedMachine =
+    let startLiftingWith machine =
         let liftingTechnique =
-            match advancedMachine with
+            match machine with
             | CrateMover9000 -> Instruction.applyWithNormalCrane
             | CrateMover9001 -> Instruction.applyWithAdvancedCrane
             

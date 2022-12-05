@@ -26,7 +26,7 @@ module AdventOfCode2022.Puzzles.Day5
                 To = instructions |> Array.item(2) |> int
             }
 
-        let apply (instruction: Instruction) (containers: Container []) : Container [] =
+        let applyWithNormalCrane (instruction: Instruction) (containers: Container []) : Container [] =
             
             let moveOneTime containers =
                 match containers |> Array.tryItem(instruction.From - 1), containers |> Array.tryItem(instruction.To - 1) with
@@ -34,6 +34,7 @@ module AdventOfCode2022.Puzzles.Day5
                     let elementToMove = fromContainer |> Array.tryHead
                     match elementToMove with
                     | Some head ->
+                        
                         let updatedToContainer = Array.append [| head |] toContainer
                         let updatedFromContainer =
                             try fromContainer |> Array.tail
@@ -53,6 +54,24 @@ module AdventOfCode2022.Puzzles.Day5
             
             [| 1 .. instruction.Move |]
             |> Array.fold (fun state _ -> moveOneTime state) containers
+        
+        let applyWithAdvancedCrane (instruction: Instruction) (containers: Container []) : Container [] =
+            match containers |> Array.tryItem(instruction.From - 1), containers |> Array.tryItem(instruction.To - 1) with
+            | Some fromContainer, Some toContainer ->
+                
+                let multipleCrates = fromContainer |> Array.take(instruction.Move)
+                let updatedToContainer = Array.append multipleCrates toContainer
+                let updatedFromContainer = Array.sub fromContainer instruction.Move (fromContainer.Length - instruction.Move)
+
+                containers
+                |> Array.mapi(fun index container ->
+                    if index.Equals(instruction.From - 1) then updatedFromContainer
+                    elif index.Equals(instruction.To - 1) then updatedToContainer
+                    else container
+                )
+    
+            | _ -> containers
+            
     
     let dayFiveInput = FileReader.readDay(5)
     
@@ -70,7 +89,7 @@ module AdventOfCode2022.Puzzles.Day5
         |> Array.fold (fun (state: int[]) (item: int) ->  [|(4 * item) - 1|] |> Array.append state)[|  |]
         
     let containers : Container [] =
-        let matrix =
+        let cratesMatrix =
             dayFiveInput
             |> Seq.filter (fun x ->
                 not <| String.IsNullOrWhiteSpace(x)
@@ -85,7 +104,7 @@ module AdventOfCode2022.Puzzles.Day5
         
         [| 0 .. (numberOfContainers - 1) |]
         |> Array.map (fun index ->
-            matrix
+            cratesMatrix
             |> Seq.fold (fun state item -> [| item |> Array.item(index) |] |> Array.append state) [|  |])
         |> Array.map (fun container -> container |> Array.filter (fun x -> not <| x.Equals("[0]")))
 
@@ -94,11 +113,20 @@ module AdventOfCode2022.Puzzles.Day5
         |> Seq.filter (fun x -> x.StartsWith("move"))
         |> Seq.map Instruction.fromString
     
-    let part1 _ =
+    type Machine = CrateMover9000 | CrateMover9001
+    
+    let startLiftingWith advancedMachine =
+        let liftingTechnique =
+            match advancedMachine with
+            | CrateMover9000 -> Instruction.applyWithNormalCrane
+            | CrateMover9001 -> Instruction.applyWithAdvancedCrane
+            
         instructions
-        |> Seq.fold (fun state instruction -> Instruction.apply instruction state) containers
+        |> Seq.fold (fun state instruction -> liftingTechnique instruction state) containers
         |> Array.map (fun container -> container |> Array.head)
         |> String.concat("")
         |> fun x -> x.Replace("[", "").Replace("]", "")
+    
+    let part1 _ = startLiftingWith CrateMover9000
 
-    let part2 _ = "Not implemented yet"
+    let part2 _ = startLiftingWith CrateMover9001

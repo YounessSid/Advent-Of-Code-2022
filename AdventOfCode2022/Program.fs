@@ -25,4 +25,8 @@
         printfn $"** Part 1 : {Day4.part1()}"
         printfn $"** Part 2 : {Day4.part2()}"
         
+        printfn "---------------- Day 5 ----------------"
+        printfn $"** Part 1 : {Day5.part1()}"
+        printfn $"** Part 2 : {Day5.part2()}"
+        
         0

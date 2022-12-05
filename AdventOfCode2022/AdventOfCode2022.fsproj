@@ -18,11 +18,15 @@
         <Content Include="Inputs\Day4.txt">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <Content Include="Inputs\Day5.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
         <Compile Include="Inputs\FileReader.fs" />
         <Compile Include="Puzzles\Day1.fs" />
         <Compile Include="Puzzles\Day2.fs" />
         <Compile Include="Puzzles\Day3.fs" />
         <Compile Include="Puzzles\Day4.fs" />
+        <Compile Include="Puzzles\Day5.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

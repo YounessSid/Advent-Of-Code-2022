@@ -13,7 +13,7 @@ module AdventOfCode2022.Puzzles.Day6
         if startIndex < numberOfUniqueChars then None
         else
             [ 0 .. (startIndex - 1) ]
-            |> List.take(numberOfUniqueChars)
+            |> List.take numberOfUniqueChars
             |> List.map (fun i -> startIndex - i)
             |> List.map tryFindItem
             |> List.choose id

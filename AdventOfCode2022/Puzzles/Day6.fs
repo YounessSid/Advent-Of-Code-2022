@@ -7,7 +7,7 @@ module AdventOfCode2022.Puzzles.Day6
         |> String.concat("")
         |> fun x -> x.ToCharArray()
     
-    let tryFindItem index = day6input |> Array.tryItem index
+    let findItem index = day6input |> Array.item index
     
     let findUniqueCharsSection startIndex numberOfUniqueChars =
         if startIndex < numberOfUniqueChars then None
@@ -15,8 +15,7 @@ module AdventOfCode2022.Puzzles.Day6
             [ 0 .. (startIndex - 1) ]
             |> List.take numberOfUniqueChars
             |> List.map (fun i -> startIndex - i)
-            |> List.map tryFindItem
-            |> List.choose id
+            |> List.map findItem
             |> List.distinct
             |> fun x -> if x.Length = numberOfUniqueChars then Some x else None
             

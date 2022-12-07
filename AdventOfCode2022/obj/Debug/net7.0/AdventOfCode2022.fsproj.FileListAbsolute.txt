@@ -33,3 +33,4 @@ C:\streamliner\AdventOfCode2022\AdventOfCode2022\bin\Debug\net7.0\Inputs\Day3.tx
 C:\streamliner\AdventOfCode2022\AdventOfCode2022\bin\Debug\net7.0\Inputs\Day4.txt
 C:\streamliner\AdventOfCode2022\AdventOfCode2022\bin\Debug\net7.0\Inputs\Day5.txt
 C:\streamliner\AdventOfCode2022\AdventOfCode2022\bin\Debug\net7.0\Inputs\Day6.txt
+C:\streamliner\AdventOfCode2022\AdventOfCode2022\bin\Debug\net7.0\Inputs\Day7.txt
